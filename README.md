@@ -1,6 +1,6 @@
 <div align='center'>
   <h2>Japanese Language Learning App</h2>
-  <h3>Name still a work in progress </h3>
+  <p>(Name still a work in progress) </p>
   <p>An app to help language students learn Japanese and teachers to manage their students</p>
 </div>
 
