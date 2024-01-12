@@ -4,7 +4,7 @@
   <p>An app to help language students learn Japanese and teachers to manage their students</p>
 </div>
 
-![Image](./public/LogoNBG.png)
+![Image](./public/Landing/HeroShiba.png)
 
 
 # Features - Implemented but not finished
