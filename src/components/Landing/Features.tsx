@@ -13,6 +13,7 @@ const Features = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: index * 0.2 }}
                         viewport={{ once: true }}
+                        key={index}
                         >
                         <motion.div
                             whileHover={{ y: -5 }}
