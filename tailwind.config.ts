@@ -13,7 +13,9 @@ const config: Config = {
         saffron: '#F2C233',
         awhite: '#F5E9D4',
         eblack: '#272216',
-        drabbrown: '#302A1A'
+        drabbrown: '#302A1A',
+        sblack: '#1A170F',
+        sblackl: '#1D1A11'
       }
     },
   },

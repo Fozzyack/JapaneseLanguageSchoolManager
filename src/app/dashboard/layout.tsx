@@ -2,15 +2,16 @@ import { getServerSession } from 'next-auth'
 import React from 'react'
 import { options } from '../api/auth/[...nextauth]/options'
 import { redirect } from 'next/navigation'
-import NavbarDesktop from '@/components/Dashboard/NavbarDesktop'
-import NavbarMobile from '@/components/Dashboard/NavbarMobile'
+import { ExtendedSession } from '@/types/nextauthvars'
+import './layout.css'
+import Navbar from '@/components/Dashboard/Navbar/Navbar'
 
 const layout = async ({ children }:
     { children: React.ReactNode }
 ) => {
 
 
-    const session = await getServerSession(options)
+    const session = await getServerSession(options) as ExtendedSession
     if (!session?.user) {
         redirect('/api/auth/signin?callbackUrl=/dashboard')
     }
@@ -18,13 +19,10 @@ const layout = async ({ children }:
 
 
     return (
-            <div className='bg-eblack min-h-screen'>
-                <div className='md:grid md:grid-cols-12 flex flex-col min-h-screen p-4'>
-                    <div className='md:col-span-5'>
-                        <NavbarDesktop session={session}/>
-                        <NavbarMobile session={session}/>
-                    </div>
-                    <div className='md:col-span-7 mt-10 md:mt-0'>
+            <div className='bg-sblack min-h-screen'>
+                <div className='flex flex-col min-h-screen md:p-0'>
+                    <Navbar session={session}/>
+                    <div className='pt-10 md:pt-0 bg-sblackl round-edges'>
                         {children}
                     </div>
                 </div>

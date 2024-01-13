@@ -1,11 +1,12 @@
-import { NextAuthOptions } from "next-auth";
+import { NextAuthOptions, Session } from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 import EmailProvider from "next-auth/providers/email";
 import PostgresAdapter from "@/utils/db/db_adapter";
 import { pool } from "@/utils/db/db";
-import { Adapter } from "next-auth/adapters";
+import { Adapter, AdapterUser } from "next-auth/adapters";
 import FacebookProvider from "next-auth/providers/facebook";
 import Google from "next-auth/providers/google";
+import { ExtendedSession, ExtendedUser } from "@/types/nextauthvars";
 
 export const options: NextAuthOptions = {
     adapter: PostgresAdapter(pool) as Adapter,
@@ -14,7 +15,7 @@ export const options: NextAuthOptions = {
             clientId: process.env.GITHUB_ID as string,
             clientSecret: process.env.GITHUB_SECRET as string
         }),
-        FacebookProvider ({
+        FacebookProvider({
             clientId: process.env.FACEBOOK_ID as string,
             clientSecret: process.env.FACEBOOK_SECRET as string
         }),
@@ -33,5 +34,13 @@ export const options: NextAuthOptions = {
             },
             from: 'no-reply@example.com'
         })
-    ]
+    ],
+    callbacks: {
+        async session({ session, user }) {
+            const extendedSession = session as ExtendedSession
+            const extendedUser = user as ExtendedUser
+            extendedSession.user = extendedUser
+            return extendedSession
+        }
+    }
 }
