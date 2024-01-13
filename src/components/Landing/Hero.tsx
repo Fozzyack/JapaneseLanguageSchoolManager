@@ -25,7 +25,7 @@ const Hero = () => {
                         className='btn-padding bg-gradient-to-r from-saffron to-bronze text-white shadow-xl'
                         onClick={() => clientNavigate(router, '/dashboard')}
                     > Sign In</motion.button>
-                    <button className='btn-padding border border-saffron text-saffron hover:bg-bronze hover:text-white transition ease-in-out duration-300'> Learn More</button>
+                    <button className='btn-padding border border-saffron text-saffron hover:bg-saffron hover:text-black transition ease-in-out duration-300'> Learn More</button>
                 </div>
             </motion.div>
             <motion.div

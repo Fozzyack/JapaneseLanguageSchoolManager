@@ -1,9 +1,9 @@
 'use client'
 import { NAVBAR_LINKS } from '@/variables/landing'
 import React from 'react'
-import Navlinks from './Navlinks'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import Navlinks from './Navlinks'
 
 const LandingNavbar = () => {
 
