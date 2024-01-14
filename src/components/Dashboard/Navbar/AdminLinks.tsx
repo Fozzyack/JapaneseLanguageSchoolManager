@@ -1,13 +1,21 @@
 'use client'
+import { ExtendedSession } from '@/types/nextauthvars'
 import { motion } from 'framer-motion'
+import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React from 'react'
 
+const ADMIN_NUMS = {
+    STUDENT: 1,
+    TEACHER: 2,
+    ADMIN: 3
+}
 export const NAV_LINKS_ADMIN = [
     {
         name: 'Manage Students',
         href: '/dashboard/manage-students',
+        role: ADMIN_NUMS.ADMIN
     }
 
 ]
@@ -26,21 +34,28 @@ const icons = (id: number, active: boolean) => {
 
 const AdminLinks = () => {
     const pathname = usePathname()
+    const { data: session } = useSession() as { data: ExtendedSession }
     return (
         <div className='border-t border-slate-500'>
             {
-                NAV_LINKS_ADMIN.map((link, index) => (
-                    <div key={index} className='flex w-full justify-center'>
-                        <Link href={link.href} key={index}>
-                            <motion.div
-                                whileTap={{ scale: 0.9 }}
-                                className='flex flex-row gap-5 py-4 px-6 items-center'>
-                                {icons(index, pathname === link.href)}
-                                <p className={`text-gray-800 ${pathname === link.href ? 'text-saffron' : 'text-slate-500'} text-[1rem]`}>{link.name}</p>
-                            </motion.div>
-                        </Link>
-                    </div>
-                ))
+                NAV_LINKS_ADMIN.map((link, index) => {
+                    if (session.user?.role && link.role <= session.user.role) {
+                        return (
+                            <div key={index} className='flex w-full justify-center'>
+
+                                <Link href={link.href} key={index}>
+                                    <motion.div
+                                        whileTap={{ scale: 0.9 }}
+                                        className='flex flex-row gap-5 py-4 px-6 items-center'>
+                                        {icons(index, pathname === link.href)}
+                                        <p className={`text-gray-800 ${pathname === link.href ? 'text-saffron' : 'text-slate-500'} text-[1rem]`}>{link.name}</p>
+                                    </motion.div>
+                                </Link>
+                            </div>
+
+                        )
+                    }
+                })
             }
         </div>
     )

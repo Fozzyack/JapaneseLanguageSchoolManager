@@ -8,7 +8,7 @@ const LogoutButton = () => {
             <Link href='/api/auth/signout'>
                 <motion.div
                     whileHover={{ y: -5 }}
-                    whileTap={{ scale: 0.9 }}
+                    whileTap={{ scale: 0.95 }}
                 >
                     <span className=' px-3 py-2 rounded-xl bg-saffron text-black'>
                         Logout

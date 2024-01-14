@@ -19,15 +19,14 @@ const layout = async ({ children }:
 
 
     return (
-            <div className='bg-sblack min-h-screen'>
+            <main className='bg-sblack min-h-screen'>
                 <div className='flex flex-col min-h-screen md:p-0'>
                     <Navbar session={session}/>
-                    <div className='pt-10 md:pt-0 bg-sblackl round-edges'>
+                    <div className='pt-16 bg-sblackl round-edges'>
                         {children}
                     </div>
                 </div>
-
-            </div>
+            </main>
     )
 }
 

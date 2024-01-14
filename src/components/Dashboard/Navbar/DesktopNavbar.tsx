@@ -16,7 +16,7 @@ const DesktopNavbar = () => {
             <div>
                 <NavLinks />
                 {
-                    session?.user?.admin && <AdminLinks />
+                    session?.user?.role && session?.user?.role > 1 && <AdminLinks />
                 }
 
             </div>

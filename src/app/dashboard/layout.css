@@ -1,10 +1,12 @@
 .round-edges {
     min-height: 100vh;
+    padding-left: 1rem;
+    padding-right: 1rem;
     @media screen and (min-width: 768px) {
         border-top-left-radius: 80px;
         border-bottom-left-radius: 80px;
         margin-left: 200px;
-        padding-left: 80px;
-        
+        padding-left: 100px;
+        padding-right: 100px;
     }
 }

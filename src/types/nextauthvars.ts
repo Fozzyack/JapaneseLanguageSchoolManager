@@ -10,5 +10,8 @@ export interface ExtendedUser extends AdapterUser {
     name?: string | null;
     email: string;
     image?: string | null;
-    admin: boolean;
+    role: number;
+    points: number;
+    classId: number;
+    levelId: number;
 }
